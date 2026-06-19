@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Первый мини-продукт с нуля — Дина</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --cream:#F5EFE4;
+  --cream2:#E8DDD0;
+  --cream3:#D8CCBA;
+  --page:#FAF7F2;
+  --ol:#3D4E20;
+  --ol2:#2E3A17;
+  --ol-tint:#EBF0DC;
+  --ol-mid:#C5D49A;
+  --am:#B07818;
+  --am-tint:#FBF0DC;
+  --dk:#1A130A;
+  --md:#5C4830;
+  --lt:#9A7A5A;
+  --white:#FFFFFF;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--page);color:var(--dk);-webkit-font-smoothing:antialiased;font-weight:300;line-height:1.6;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s,border .3s;}
+nav.up{background:rgba(250,247,242,.96);backdrop-filter:blur(16px);border-bottom:.5px solid var(--cream2);}
+.ni{max-width:780px;margin:0 auto;padding:1.1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.nlogo{font-size:13px;font-weight:500;color:var(--ol);text-decoration:none;letter-spacing:.01em;}
+.nr{display:flex;align-items:center;gap:1.75rem;}
+.nlink{font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--lt);text-decoration:none;transition:color .2s;}
+.nlink:hover{color:var(--ol);}
+.nbtn{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cream);background:var(--ol);padding:10px 24px;border-radius:4px;text-decoration:none;transition:background .2s;}
+.nbtn:hover{background:var(--ol2);}
+
+/* WRAP */
+.wrap{max-width:780px;margin:0 auto;padding:0 2rem 8rem;}
+
+/* ── HERO ── */
+.hero{padding:9rem 0 6rem;border-bottom:.5px solid var(--cream2);}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--am);margin-bottom:2.5rem;}
+.hero h1{font-size:clamp(52px,8vw,84px);font-weight:700;line-height:.96;color:var(--ol);letter-spacing:-.03em;margin-bottom:3rem;}
+.hero h1 span{display:block;color:var(--am);font-weight:300;font-size:.75em;letter-spacing:-.02em;}
+.h-bottom{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;}
+.h-desc{font-size:15px;font-weight:300;line-height:1.85;color:var(--md);}
+.h-desc strong{font-weight:500;color:var(--dk);}
+.h-side{display:flex;flex-direction:column;align-items:flex-end;gap:2rem;}
+.h-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;}
+.h-tag{font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--ol);border:.5px solid var(--cream3);background:var(--cream);padding:6px 14px;border-radius:3px;}
+.btn-h{display:inline-flex;align-items:center;gap:12px;background:var(--ol);color:var(--cream);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:16px 32px;border-radius:4px;text-decoration:none;transition:background .2s,transform .1s;}
+.btn-h:hover{background:var(--ol2);transform:translateY(-1px);}
+.btn-h svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* ── SECTION WRAPPER ── */
+.sec{padding:5.5rem 0;border-bottom:.5px solid var(--cream2);}
+
+/* ── SECTION HEADING ── */
+.sec-label{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--am);margin-bottom:1.25rem;display:flex;align-items:center;gap:.75rem;}
+.sec-label::after{content:'';height:.5px;background:var(--am);opacity:.25;flex:1;max-width:40px;}
+.sec-title{font-size:clamp(30px,4.5vw,44px);font-weight:700;line-height:1.05;color:var(--ol);letter-spacing:-.025em;margin-bottom:.6rem;}
+.sec-title em{font-style:normal;font-weight:300;color:var(--am);}
+.sec-sub{font-size:14px;font-weight:300;color:var(--lt);line-height:1.75;margin-top:.75rem;max-width:420px;}
+
+/* ── PAIN ── */
+.pain-intro{font-size:16px;font-weight:300;line-height:1.85;color:var(--md);margin-bottom:3rem;max-width:540px;}
+.pain-intro strong{font-weight:600;color:var(--dk);}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;border:.5px solid var(--cream2);}
+.pc{padding:2rem 1.75rem;border-right:.5px solid var(--cream2);border-bottom:.5px solid var(--cream2);background:var(--cream);transition:background .2s;}
+.pc:hover{background:#EDE4D8;}
+.pc:nth-child(2n){border-right:none;}
+.pc:nth-child(3),.pc:nth-child(4){border-bottom:none;}
+.pc-n{font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--am);display:block;margin-bottom:.9rem;}
+.pc h3{font-size:14px;font-weight:600;color:var(--dk);margin-bottom:.55rem;line-height:1.35;}
+.pc p{font-size:13px;font-weight:300;color:var(--md);line-height:1.7;}
+.pain-pull{margin-top:2.5rem;padding:2rem 2rem 2rem 1.75rem;background:var(--am-tint);border-left:2px solid var(--am);}
+.pain-pull p{font-size:16px;font-weight:300;line-height:1.75;color:var(--dk);font-style:italic;}
+.pain-pull p strong{font-style:normal;font-weight:600;color:var(--am);}
+
+/* ── MODULES ── */
+.modlist{display:flex;flex-direction:column;}
+.mod{border-top:.5px solid var(--cream2);cursor:pointer;}
+.mod:last-of-type{border-bottom:.5px solid var(--cream2);}
+.mod-h{display:flex;align-items:center;gap:1.25rem;padding:1.35rem 0;user-select:none;}
+.mod-idx{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--am);width:28px;flex-shrink:0;}
+.mod-name{font-size:14px;font-weight:500;color:var(--dk);flex:1;line-height:1.35;transition:color .2s;}
+.mod.open .mod-name{color:var(--ol);}
+.mod-badge{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ol);background:var(--ol-tint);border:.5px solid var(--ol-mid);padding:3px 10px;border-radius:3px;flex-shrink:0;}
+.mod-chev{width:16px;height:16px;flex-shrink:0;stroke:var(--lt);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s cubic-bezier(.4,0,.2,1);}
+.mod.open .mod-chev{transform:rotate(180deg);}
+.mod-body{max-height:0;overflow:hidden;transition:max-height .38s cubic-bezier(.4,0,.2,1);}
+.mod.open .mod-body{max-height:400px;}
+.mod-inner{padding:.25rem 0 1.5rem 2.25rem;}
+.mod-inner ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.mod-inner li{font-size:13px;font-weight:300;color:var(--md);line-height:1.65;padding-left:1.2rem;position:relative;}
+.mod-inner li::before{content:'—';position:absolute;left:0;color:var(--ol-mid);font-weight:400;}
+.mod-inner p{font-size:13px;font-weight:300;color:var(--md);line-height:1.75;}
+.bonus{display:flex;gap:1.25rem;align-items:flex-start;margin-top:1.5rem;padding:1.5rem 1.75rem;background:var(--ol-tint);border:.5px solid var(--ol-mid);border-radius:4px;}
+.bonus-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--am);color:#fff;padding:4px 10px;border-radius:3px;white-space:nowrap;flex-shrink:0;margin-top:2px;}
+.bonus h4{font-size:13px;font-weight:600;color:var(--ol);margin-bottom:4px;}
+.bonus p{font-size:13px;font-weight:300;color:var(--md);line-height:1.6;}
+
+/* ── RESULTS ── */
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);border:.5px solid var(--cream2);}
+.ri{padding:1.75rem 1.5rem;border-right:.5px solid var(--cream2);border-bottom:.5px solid var(--cream2);background:var(--cream);transition:background .2s;}
+.ri:hover{background:#EDE4D8;}
+.ri:nth-child(3n){border-right:none;}
+.ri:nth-child(4),.ri:nth-child(5),.ri:nth-child(6){border-bottom:none;}
+.ri-n{font-size:28px;font-weight:700;color:var(--ol-mid);display:block;line-height:1;margin-bottom:.65rem;letter-spacing:-.02em;}
+.ri-t{font-size:13px;font-weight:400;color:var(--dk);line-height:1.5;}
+
+/* ── FOR WHO ── */
+.who-cols{display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
+.wh3{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ol);margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:.5px solid var(--cream2);}
+.wh3.no{color:var(--am);}
+.wlist{list-style:none;display:flex;flex-direction:column;gap:.85rem;}
+.wlist li{font-size:14px;font-weight:300;color:var(--md);line-height:1.55;padding-left:1.35rem;position:relative;}
+.wlist li::before{position:absolute;left:0;font-size:12px;font-weight:600;}
+.yes li::before{content:'✓';color:var(--ol);}
+.no-list li::before{content:'✗';color:var(--am);}
+
+/* ── AUTHOR ── */
+.auth-wrap{display:grid;grid-template-columns:180px 1fr;gap:5rem;align-items:start;}
+.auth-left{}
+.auth-av{width:64px;height:64px;border-radius:50%;background:var(--ol);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:var(--cream);margin-bottom:1.35rem;}
+.auth-name{font-size:20px;font-weight:700;color:var(--dk);margin-bottom:.25rem;letter-spacing:-.01em;}
+.auth-handle{font-size:12px;font-weight:300;color:var(--lt);letter-spacing:.03em;}
+.auth-stats{margin-top:2.25rem;display:flex;flex-direction:column;gap:1.35rem;}
+.asn{font-size:28px;font-weight:700;color:var(--ol);line-height:1;letter-spacing:-.02em;}
+.asl{font-size:11px;font-weight:300;color:var(--lt);margin-top:3px;letter-spacing:.04em;}
+.auth-bio{font-size:14px;font-weight:300;line-height:1.95;color:var(--md);}
+.auth-bio strong{font-weight:500;color:var(--dk);}
+
+/* ── FAQ ── */
+.faqs{display:flex;flex-direction:column;}
+.fq{border-top:.5px solid var(--cream2);cursor:pointer;}
+.fq:last-child{border-bottom:.5px solid var(--cream2);}
+.fq-q{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.25rem 0;user-select:none;}
+.fq-q span{font-size:14px;font-weight:400;color:var(--dk);line-height:1.4;transition:color .2s;}
+.fq.open .fq-q span{color:var(--ol);}
+.fq-arr{width:16px;height:16px;flex-shrink:0;stroke:var(--lt);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s cubic-bezier(.4,0,.2,1);}
+.fq.open .fq-arr{transform:rotate(180deg);}
+.fq-body{max-height:0;overflow:hidden;transition:max-height .38s cubic-bezier(.4,0,.2,1);}
+.fq.open .fq-body{max-height:300px;}
+.fq-inner p{font-size:13px;font-weight:300;color:var(--md);line-height:1.8;padding-bottom:1.25rem;}
+
+/* ── CTA ── */
+.cta-sec{padding:5.5rem 0 0;border-bottom:none;}
+.cta-box{background:var(--ol);display:grid;grid-template-columns:1fr 1fr;}
+.cta-l{padding:4.5rem;}
+.cta-ey{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(197,212,154,.45);margin-bottom:1.35rem;}
+.cta-h{font-size:clamp(30px,4.5vw,44px);font-weight:700;color:var(--cream);line-height:1.05;letter-spacing:-.025em;margin-bottom:1.25rem;}
+.cta-h em{font-style:normal;font-weight:300;color:var(--ol-mid);}
+.cta-desc{font-size:13px;font-weight:300;color:rgba(235,240,220,.5);line-height:1.8;}
+.cta-r{padding:4.5rem;border-left:.5px solid rgba(197,212,154,.12);display:flex;flex-direction:column;justify-content:space-between;gap:2.5rem;}
+.cta-pl{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(197,212,154,.4);margin-bottom:.5rem;}
+.cta-price{font-size:60px;font-weight:700;color:var(--cream);line-height:1;letter-spacing:-.03em;}
+.cta-psub{font-size:12px;font-weight:300;color:rgba(235,240,220,.3);margin-top:.35rem;letter-spacing:.04em;}
+.cta-perks{display:flex;flex-direction:column;gap:.65rem;margin-top:2rem;}
+.cta-perk{font-size:13px;font-weight:300;color:rgba(235,240,220,.55);display:flex;align-items:center;gap:.9rem;}
+.cta-dot{width:3px;height:3px;border-radius:50%;background:var(--ol-mid);flex-shrink:0;}
+.btn-cta{display:flex;align-items:center;justify-content:space-between;gap:1rem;background:var(--cream);color:var(--ol);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:18px 28px;border-radius:4px;text-decoration:none;transition:background .2s;}
+.btn-cta:hover{background:#fff;}
+.btn-cta svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.cta-foot{font-size:11px;font-weight:300;color:rgba(235,240,220,.2);letter-spacing:.05em;text-align:center;padding:1.25rem 0;}
+
+footer{max-width:780px;margin:0 auto;padding:2rem 2rem;display:flex;justify-content:space-between;font-size:11px;font-weight:300;color:var(--lt);letter-spacing:.04em;border-top:.5px solid var(--cream2);}
+
+/* ANIMATE */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.rv.in{opacity:1;transform:translateY(0);}
+
+@media(max-width:600px){
+  .wrap{padding:0 1.25rem 6rem;}
+  .ni{padding:.9rem 1.25rem;}
+  .nlink{display:none;}
+  .hero{padding:7rem 0 5rem;}
+  .hero h1{font-size:46px;}
+  .h-bottom,.pgrid,.rgrid,.who-cols,.auth-wrap,.cta-box{grid-template-columns:1fr;}
+  .h-side{align-items:flex-start;}
+  .h-tags{justify-content:flex-start;}
+  .pc{border-right:none;}
+  .pc:nth-child(3){border-bottom:.5px solid var(--cream2);}
+  .ri{border-right:none;}
+  .ri:nth-child(4),.ri:nth-child(5){border-bottom:.5px solid var(--cream2);}
+  .cta-l,.cta-r{padding:2.5rem 1.75rem;}
+  .cta-r{border-left:none;border-top:.5px solid rgba(197,212,154,.12);}
+  .cta-price{font-size:48px;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="ni">
+    <a href="#" class="nlogo">@dina.bezlica</a>
+    <div class="nr">
+      <a href="#modules" class="nlink">Программа</a>
+      <a href="#author" class="nlink">Об авторе</a>
+      <a href="https://taplink.cc/reliablespecialist/p/113c892/" class="nbtn">Приобрести</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero rv">
+    <p class="hero-eyebrow">Мини-курс · Онлайн</p>
+    <h1>Первый<br>мини-продукт<br><span>с нуля</span></h1>
+    <div class="h-bottom">
+      <p class="h-desc">Пошаговый план от нията до первой продажи. Без голоса, без лица, из дома. <strong>Халяльно.</strong></p>
+      <div class="h-side">
+        <div class="h-tags">
+          <span class="h-tag">Без голоса и лица</span>
+          <span class="h-tag">Из дома</span>
+          <span class="h-tag">Халяльно</span>
+          <span class="h-tag">Навсегда</span>
+        </div>
+        <a href="#buy" class="btn-h">Приобрести <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAIN -->
+  <div class="sec rv">
+    <div class="sec-label">Узнаёшь себя?</div>
+    <div class="sec-title">Твои знания стоят денег.<br><em>Но продукта ещё нет.</em></div>
+    <div class="sec-sub">Подруги спрашивают совета — ты объясняешь, помогаешь. Они благодарят. Деньги не получаешь.</div>
+    <br><br>
+    <p class="pain-intro">Не потому что знания ничего не стоят. А потому что нет продукта. Вот что обычно мешает начать:</p>
+    <div class="pgrid">
+      <div class="pc"><span class="pc-n">01</span><h3>«Нельзя показывать лицо»</h3><p>Ты закрыла эту дверь ещё до того, как попробовала. Продавать можно и без этого — совсем.</p></div>
+      <div class="pc"><span class="pc-n">02</span><h3>«Я просто мама, не эксперт»</h3><p>Синдром самозванца врёт. Ты знаешь больше, чем та, кто только начинает этот путь.</p></div>
+      <div class="pc"><span class="pc-n">03</span><h3>«Не знаю с чего начать»</h3><p>Смотришь на других — кажется, пропущено что-то важное. Непонятно, с какого шага начали они.</p></div>
+      <div class="pc"><span class="pc-n">04</span><h3>«Покупала курсы — была вода»</h3><p>Деньги потрачены, продукта нет. Осталось разочарование и недоверие к новому обучению.</p></div>
+    </div>
+    <div class="pain-pull"><p>«Каждый месяц без продукта — ещё один месяц зависимости от чужого кошелька. Ты знаешь, что могла бы иначе. <strong>Просто не было чёткого плана.</strong>»</p></div>
+  </div>
+
+  <!-- MODULES -->
+  <div class="sec rv" id="modules">
+    <div class="sec-label">Что внутри — нажми чтобы раскрыть</div>
+    <div class="sec-title">Программа<br><em>курса</em></div>
+    <div class="sec-sub">Каждый урок — одно конкретное действие. Никакой воды.</div>
+    <br><br>
+    <div class="modlist">
+      <div class="mod" onclick="tm(this)">
+        <div class="mod-h"><span class="mod-idx">00</span><span class="mod-name">Ният и границы дозволенного</span><svg class="mod-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="mod-body"><div class="mod-inner"><p>Правильное намерение перед стартом. Что разрешено продавать, а что нет. Как вести дела с баракятом и без греха. Фундамент, без которого остальное не имеет смысла.</p></div></div>
+      </div>
+      <div class="mod" onclick="tm(this)">
+        <div class="mod-h"><span class="mod-idx">01</span><span class="mod-name">Создаём мини-продукт с нуля</span><span class="mod-badge">Основа</span><svg class="mod-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="mod-body"><div class="mod-inner"><ul><li>Три формата без голоса и лица</li><li>Как найти тему за один вечер — три вопроса</li><li>С какого продукта начать новичку + сервисы</li><li>Структура от идеи до скелета — на живом примере</li></ul></div></div>
+      </div>
+      <div class="mod" onclick="tm(this)">
+        <div class="mod-h"><span class="mod-idx">02</span><span class="mod-name">Контент, который продаёт</span><span class="mod-badge">Продвижение</span><svg class="mod-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="mod-body"><div class="mod-inner"><ul><li>Два типа контента: охват и продажа</li><li>Контент без фитны — что можно и нельзя</li><li>Формула полезного поста + живой пример</li><li>Банк 30 идей для рилс без лица</li><li>Промты для нейросетей — план за минуту</li></ul></div></div>
+      </div>
+      <div class="mod" onclick="tm(this)">
+        <div class="mod-h"><span class="mod-idx">03</span><span class="mod-name">Первый запуск с адабом</span><span class="mod-badge">Продажи</span><svg class="mod-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="mod-body"><div class="mod-inner"><ul><li>7 шагов от анонса до продажи с таваккулем</li><li>Правила общения с клиентом по исламу</li><li>Ответы на возражения честно, без давления</li><li>Где найти первых 10 покупателей и как написать</li><li>3 греховные ошибки в продажах</li></ul></div></div>
+      </div>
+      <div class="mod" onclick="tm(this)">
+        <div class="mod-h"><span class="mod-idx">04</span><span class="mod-name">Техника: как всё настроить</span><span class="mod-badge">Система</span><svg class="mod-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="mod-body"><div class="mod-inner"><ul><li>Куда загрузить курс без сложных платформ</li><li>Как оформить продукт в Telegram-канале</li><li>Скрипт приёма первых оплат вручную</li><li>Порядок автоматизации по этапам</li><li>Как собрать отзывы — фундамент следующих продаж</li></ul></div></div>
+      </div>
+    </div>
+    <div class="bonus"><span class="bonus-lbl">Бонус</span><div><h4>Рилс без лица</h4><p>Pinterest + CapCut: красивый фон и текст за 15 минут, с телефона, бесплатно.</p></div></div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="sec rv">
+    <div class="sec-label">На выходе у тебя будет</div>
+    <div class="sec-title">Конкретный<br><em>результат</em></div>
+    <br><br>
+    <div class="rgrid">
+      <div class="ri"><span class="ri-n">01</span><span class="ri-t">Тема продукта сформулирована</span></div>
+      <div class="ri"><span class="ri-n">02</span><span class="ri-t">Структура первого продукта готова</span></div>
+      <div class="ri"><span class="ri-n">03</span><span class="ri-t">Контент-план на первый месяц</span></div>
+      <div class="ri"><span class="ri-n">04</span><span class="ri-t">Первые уроки размещены в канале</span></div>
+      <div class="ri"><span class="ri-n">05</span><span class="ri-t">План запуска на 7 дней по шагам</span></div>
+      <div class="ri"><span class="ri-n">06</span><span class="ri-t">Скрипт приёма первых оплат</span></div>
+    </div>
+  </div>
+
+  <!-- FOR WHO -->
+  <div class="sec rv">
+    <div class="sec-label">Для кого этот курс</div>
+    <div class="sec-title">Подойдёт и<br><em>не подойдёт</em></div>
+    <br><br>
+    <div class="who-cols">
+      <div>
+        <p class="wh3">Подойдёт, если</p>
+        <ul class="wlist yes">
+          <li>Ты в декрете или дома и хочешь свой доход</li>
+          <li>Есть знания, которые ты пока отдаёшь бесплатно</li>
+          <li>Не хочешь показывать лицо — и это принципиально</li>
+          <li>Тебе важен халяльный формат</li>
+          <li>Хочешь начать, а не «когда-нибудь»</li>
+        </ul>
+      </div>
+      <div>
+        <p class="wh3 no">Не подойдёт, если</p>
+        <ul class="wlist no-list">
+          <li>Ищешь «миллион за месяц без усилий»</li>
+          <li>Хочешь смотреть, но не делать</li>
+          <li>Не готова посвящать хотя бы 20 минут в день</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTHOR -->
+  <div class="sec rv" id="author">
+    <div class="sec-label">Кто ведёт</div>
+    <div class="sec-title">Дина —<br><em>два бизнеса из дома</em></div>
+    <br><br>
+    <div class="auth-wrap">
+      <div class="auth-left">
+        <div class="auth-av">Д</div>
+        <div class="auth-name">Дина</div>
+        <div class="auth-handle">@dina.bezlica</div>
+        <div class="auth-stats">
+          <div><div class="asn">5 лет</div><div class="asl">в онлайне</div></div>
+          <div><div class="asn">100+</div><div class="asl">запусков</div></div>
+          <div><div class="asn">с нуля</div><div class="asl">без команды</div></div>
+        </div>
+      </div>
+      <p class="auth-bio">Начинала в декрете — без стартового капитала и без опыта в бизнесе. Выстроила два бизнеса из дома, одна, без команды.<br><br>Сама прошла путь без голоса и без лица — от первого PDF-гайда до выстроенной системы продаж.<br><br><strong>Не продаю мечту — показываю механику.</strong></p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="sec rv">
+    <div class="sec-label">Частые вопросы</div>
+    <div class="sec-title">Ответы на<br><em>главные вопросы</em></div>
+    <br><br>
+    <div class="faqs">
+      <div class="fq" onclick="tf(this)"><div class="fq-q"><span>Нужен ли опыт в продажах или блогинге?</span><svg class="fq-arr" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div><div class="fq-body"><div class="fq-inner"><p>Нет. Курс создан для тех, кто начинает с нуля. Всё пошагово — от выбора темы до первой продажи.</p></div></div></div>
+      <div class="fq" onclick="tf(this)"><div class="fq-q"><span>Сколько времени нужно в день?</span><svg class="fq-arr" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div><div class="fq-body"><div class="fq-inner"><p>Каждый урок — 15–20 минут и одно конкретное действие. Можно проходить пока дети спят.</p></div></div></div>
+      <div class="fq" onclick="tf(this)"><div class="fq-q"><span>Что если у меня нет подписчиков в Instagram?</span><svg class="fq-arr" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div><div class="fq-body"><div class="fq-inner"><p>Первые продажи идут через ближний круг — подруги, родственницы, чаты. Курс покажет как найти первых 10 покупателей без аудитории.</p></div></div></div>
+      <div class="fq" onclick="tf(this)"><div class="fq-q"><span>Можно вести курс совсем без голоса и лица?</span><svg class="fq-arr" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div><div class="fq-body"><div class="fq-inner"><p>Да. Три формата в курсе не требуют ни голоса, ни лица — PDF-гайд, мини-курс в Telegram, разбор в переписке. Бонус — рилс с телефона без съёмки себя.</p></div></div></div>
+      <div class="fq" onclick="tf(this)"><div class="fq-q"><span>До какого времени будет доступ?</span><svg class="fq-arr" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div><div class="fq-body"><div class="fq-inner"><p>Навсегда. Доступ к закрытому Telegram-каналу открывается сразу после оплаты без ограничений по времени.</p></div></div></div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-sec rv" id="buy">
+    <div class="cta-box">
+      <div class="cta-l">
+        <p class="cta-ey">Готова начать?</p>
+        <h2 class="cta-h">Первый шаг<br><em>уже рядом</em></h2>
+        <p class="cta-desc">Даже из дома. Даже без лица. Даже если кажется, что ты не эксперт. Чёткий план уже внутри.</p>
+      </div>
+      <div class="cta-r">
+        <div>
+          <p class="cta-pl">Стоимость</p>
+          <div class="cta-price">990 ₽</div>
+          <p class="cta-psub">единоразово · доступ навсегда</p>
+          <div class="cta-perks">
+            <div class="cta-perk"><span class="cta-dot"></span>5 модулей + бонус про рилс</div>
+            <div class="cta-perk"><span class="cta-dot"></span>Закрытый Telegram-канал</div>
+            <div class="cta-perk"><span class="cta-dot"></span>Открывается сразу после оплаты</div>
+            <div class="cta-perk"><span class="cta-dot"></span>Доступ без ограничений по времени</div>
+          </div>
+        </div>
+        <div>
+          <a href="https://taplink.cc/reliablespecialist/p/113c892/" class="btn-cta">Приобрести курс <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <p class="cta-foot">@dina.bezlica · Вопросы — в директ</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer><span>© 2025 @dina.bezlica</span><span>Все права защищены</span></footer>
+
+<script>
+function tm(el){const o=el.classList.contains('open');document.querySelectorAll('.mod.open').forEach(m=>m.classList.remove('open'));if(!o)el.classList.add('open');}
+function tf(el){const o=el.classList.contains('open');document.querySelectorAll('.fq.open').forEach(f=>f.classList.remove('open'));if(!o)el.classList.add('open');}
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('up',window.scrollY>40);},{ passive:true });
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.05});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
